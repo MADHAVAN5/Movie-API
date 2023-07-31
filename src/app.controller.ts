@@ -6,9 +6,9 @@ import { movieDto } from './dtos/movie.dto';
 export class AppController {
   constructor(private readonly appService: AppService) {}
 
-  @Get()
-  getHello(): string {
-    return this.appService.getHello();
+  @Get('get-all')
+  getAll() {
+    return this.appService.getAll();
   }
 
   @Post('/add-movie')

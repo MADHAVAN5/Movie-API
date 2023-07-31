@@ -10,8 +10,9 @@ export class AppService {
 ) {}
 
 
-  getHello(): string {
-    return 'Hello World!';
+  async getAll() {
+    var response = await this.db.collection('movie').find({}).toArray();
+    return response;
   }
 
   async addMovie(body: movieDto) {
