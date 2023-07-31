@@ -9,7 +9,7 @@ import { MongoClient, Db } from 'mongodb';
         try {
           const client = await MongoClient.connect('mongodb://127.0.0.1');
 
-          return client.db('pizza');
+          return client.db('movies-api');
         } catch (e) {
           throw e;
         }
