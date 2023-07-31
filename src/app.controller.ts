@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Post } from '@nestjs/common';
+import { Body, Controller, Get, Param, Post } from '@nestjs/common';
 import { AppService } from './app.service';
 import { movieDto } from './dtos/movie.dto';
 
@@ -11,7 +11,12 @@ export class AppController {
     return this.appService.getAll();
   }
 
-  @Post('/add-movie')
+  @Get('get-single/:id')
+  getMovie(@Param('id') id: number) {
+    return this.appService.getMovie(id);
+  }
+
+  @Post('add-movie')
   addMovie(@Body() movieDto: movieDto) {
     return this.appService.addMovie(movieDto);
   }

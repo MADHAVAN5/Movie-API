@@ -1,5 +1,5 @@
 import { Inject, Injectable } from '@nestjs/common';
-import { Db } from 'mongodb';
+import { Db, ObjectId } from 'mongodb';
 import { movieDto } from './dtos/movie.dto';
 
 @Injectable()
@@ -18,5 +18,10 @@ export class AppService {
   async addMovie(body: movieDto) {
     var response = await this.db.collection('movie').insertOne(body);
     return response;
-  }  
+  }
+
+  async getMovie(id) {
+    var response = await this.db.collection('movie').findOne({_id: new ObjectId(id)});
+    return response;
+  }
 }
